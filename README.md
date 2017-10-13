@@ -4,6 +4,7 @@ Le dotfile n'est pas tester pour une raison que mon système tourne parfaitement
 
 ## Quel OS as-tu ?
 J'ai Ubuntu 17.04
+![Mon screenfetch](https://i.imgur.com/DTc1uWK.png)
 ## A qui s'adresse se repo ?
 Se repo s'adresse à son créateur mais vous pouvait vous en servir affin d'avoir ma config ubuntu
 ## Peux-tu me passé une clé de license IDEA ?
