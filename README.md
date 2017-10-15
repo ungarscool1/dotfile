@@ -16,8 +16,8 @@ Tout est écrit sur ![ungarscool1/ungs-bash](https://github.com/ungarscool1/ungs
 `` curl https://github.com/ungarscool1/dotfile/blob/master/install.sh | sudo sh ``
 ### Si vous n'avez pas curl
 Pas besoin de mettre la commande sudo avant ``sh install.sh`` car sudo est inclu à chaque commande dans le fichier d'intallation.
-`` wget https://github.com/ungarscool1/dotfile/blob/master/install.sh
-sh install.sh
-``
+`` wget https://github.com/ungarscool1/dotfile/blob/master/install.sh``
+
+``sh install.sh``
 ## J'ai un bug !
 Si vous avez un bug il y a la section issue pour me prévenir du bug
