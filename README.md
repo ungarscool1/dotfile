@@ -3,8 +3,8 @@ Tu dotfile es mi dotfile.
 Le dotfile n'est pas tester pour une raison que mon système tourne parfaitement, plus tard il y aura un test du dotfile mais pas pour tout de suite.
 
 ## Quel OS as-tu ?
-J'ai Ubuntu 17.04
-![Mon screenfetch](https://i.imgur.com/DTc1uWK.png)
+J'ai Antergos 18.10
+![Mon screenfetch](https://i.imgur.com/ZaXzyKe.png)
 ## A qui s'adresse se repo ?
 Se repo s'adresse à son créateur mais vous pouvait vous en servir affin d'avoir ma config ubuntu
 ## Peux-tu me passé une clé de license IDEA ?
