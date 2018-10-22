@@ -6,7 +6,7 @@ Le dotfile n'est pas tester pour une raison que mon système tourne parfaitement
 J'ai Antergos 18.10
 ![Mon screenfetch](https://i.imgur.com/ZaXzyKe.png)
 ## A qui s'adresse se repo ?
-Se repo s'adresse à son créateur mais vous pouvait vous en servir affin d'avoir ma config ubuntu
+Se repo s'adresse à son créateur mais vous pouvait vous en servir affin d'avoir ma config Arch
 ## Peux-tu me passé une clé de license IDEA ?
 Euh non
 ## Comment se servir de ungs-utils ?
