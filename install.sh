@@ -114,7 +114,6 @@ then
 	nativefier --name "Messages Android" --icon "android-messages-icon.png" https://messages.android.com/
 	sudo mkdir /opt/ungarscool1
 	sudo mv messages-android-linux-x64 /opt/ungarscool1/messages-android
-	sudo ln /opt/ungarscool1/messages-android/messages-android /bin/messages-android
 	echo "Connectez-vous et fermez Messages Android une fois connecté"
 	/opt/ungarscool1/messages-android/messages-android
 else
@@ -128,3 +127,6 @@ echo " "
 echo " "
 echo "Nettoyage..."
 rm Yaru.zip packages.list games.list android-messages-icon.png
+
+clear
+echo "Installation terminé !"
