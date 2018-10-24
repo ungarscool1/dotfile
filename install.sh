@@ -95,7 +95,7 @@ then
 	wget -q https://github.com/ungarscool1/dotfile/raw/master/files/android-messages-icon.png
 	wget -q https://github.com/ungarscool1/dotfile/raw/master/files/Messages%20Android.desktop -o Messages\ Android.desktop
 	mv Messages\ Android.desktop ~/.local/share/applications/
-	nativefier --name "Messages Android" --icon "android-messages-icon.png" https://messages.android.com/
+	nativefier --app-name "Messages Android" --icon "android-messages-icon.png" --tray https://messages.android.com/
 	sudo mkdir /opt/ungarscool1
 	sudo mv messages-android-linux-x64 /opt/ungarscool1/messages-android
 	echo "Connectez-vous et fermez Messages Android une fois connecté"
