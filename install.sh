@@ -18,6 +18,10 @@ wget -q https://github.com/ungarscool1/dotfile/raw/master/packages/games.list
 echo "Terminé"
 echo " "
 echo " "
+echo "Ajout des clés de confiances pour la compilation de discord"
+gpg --recv-keys --keyserver hkp://pgp.mit.edu 0FC3042E345AD05D
+echo " "
+echo " "
 echo "Téléchargement de la liste des packets packages.list"
 echo " "
 echo "Les paquets suivants vont être télécharger: "
