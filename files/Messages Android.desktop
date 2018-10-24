@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Messages Android
+Comment=Envoyer des messages depuis l'ordinateur
+Exec=/opt/ungarscool1/messages-android/messages-android
+Icon=/opt/ungarscool1/messages-android/resources/app/icon.png
+Terminal=false
+Type=Application
+Categories=Messaging;
