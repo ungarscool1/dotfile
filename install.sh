@@ -66,6 +66,7 @@ then
 	echo "Configuration de discord en cours..."
 	echo "Connectez-vous"
 	discord
+	echo "Configuration de discord, terminé"
 else
 	echo "Configuration de discord décliné !"
 fi
@@ -79,6 +80,7 @@ then
 	echo "Configuration de spotify en cours..."
 	echo "Connectez-vous et fermez spotify une fois connecté"
 	spotify
+	echo "Configuration de spotify, terminé"
 else
 	echo "Configuration de spotify décliné !"
 fi
@@ -100,6 +102,7 @@ then
 	sudo mv messages-android-linux-x64 /opt/ungarscool1/messages-android
 	echo "Connectez-vous et fermez Messages Android une fois connecté"
 	/opt/ungarscool1/messages-android/messages-android
+	echo "Configuration de Messages Android, terminé"
 else
 	echo "Configuration de Messages Android décliné !"
 fi
@@ -114,6 +117,7 @@ then
 	
 	rm .bashrc
 	wget -q https://raw.githubusercontent.com/ungarscool1/dotfile/master/files/.bashrc
+	echo "Configuration de .bashrc, terminé"
 else
 	echo "Configuration de .bashrc décliné !"
 fi
@@ -126,6 +130,14 @@ sudo rm /usr/share/applications/steam*
 echo "Téléchargement d'un raccourci non buggé..."
 wget -q https://raw.githubusercontent.com/ungarscool1/dotfile/master/files/steam.desktop
 sudo mv steam.desktop /usr/share/applications/
+echo "Configuration de steam, terminé"
+echo " "
+echo " "
+echo "Correction de teamvieawer..."
+echo "Activation du service..."
+sudo systemctl enable teamviewerd
+sudo systemctl start teamviewerd
+echo "Configuration de teamviewer, terminé"
 # Nettoyage...
 echo " "
 echo " "
