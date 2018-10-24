@@ -5,57 +5,76 @@ read imok
 echo -n "Requesting sudoeur..."
 sudo echo "Votre mot de passe est enregistrer pour la durée de l'installation"
 
-# Installation des paquets
+# Installation
 
-echo -n "Voulez-vous installer ungs-utils (v2.0beta.3) ? [o/N]"
-read installUngsUtils
-if [ -z $installUngsUtils ] || [ $installUngsUtils = 'y' ] || [ $installUngsUtils = 'Y' ] || [ $installUngsUtils = 'yes' ] || [ $installUngsUtils = 'YES' ] || [ $installUngsUtils = 'o' ] || [ $installUngsUtils = 'O' ] || [ $installUngsUtils = 'oui' ] || [ $installUngsUtils = 'OUI' ]
-then
-	echo "Installation de Java 8..."
-	echo "Si vous trouvez que l'installation est trop longue, merci de patienter..."
-	sudo pacman -S jre8-openjdk --quiet
-	wget https://github.com/ungarscool1/ungs-bash/releases/download/v2.0beta.3/ungs-utils.jar
-        wget https://github.com/ungarscool1/ungs-bash/releases/download/v2.0beta.3/ungs-utils
-	chmod +x ungs-utils
-	sudo mkdir /opt/ungarscool1
-	sudo mkdir /opt/ungarscool1/ungs-utils
-	sudo mv ungs-utils.jar /opt/ungarscool1/ungs-utils/
-	sudo chmod 777 /opt/ungarscool1/ungs-utils
-	sudo chmod 777 /opt/ungarscool1/ungs-utils*
-	sudo chmod 777 /opt/ungarscool1/ungs-utils/*
-	sudo mv ungs-utils /bin/
-else
-	echo "ungs-utils ne sera pas installé"
-fi
+echo "Installation de yaourt..."
+sudo pacman -S yaourt wget
+echo "Terminé"
+echo " "
+echo " "
+echo "Téléchargement de la liste des packets à télécharger"
+wget -q https://github.com/ungarscool1/dotfile/raw/master/packages/packages.list
+wget -q https://github.com/ungarscool1/dotfile/raw/master/packages/games.list
+echo "Terminé"
+echo " "
+echo " "
+echo "Téléchargement de la liste des packets packages.list"
+echo " "
+echo "Les paquets suivants vont être télécharger: "
+cat packages.list
+echo "Êtes vous sûr ? [ENTRER pour continuer]"
+read sur1
+cat packages.list | xargs yaourt -S --needed --noconfirm
 
-echo "Installation de Steam"
-sudo pacman -S steam --quiet
-echo "Installation de Yaourt pour pouvoir utiliser AUR"
-sudo pacman -S yaourt --quiet
-echo "Installation de powerline et de powerline-fonts"
-sudo pacman -S powerline powerline-fonts
 echo " "
 echo " "
-echo "Installation de discord"
-echo "Validation des public key"
-gpg --recv-keys --keyserver hkp://pgp.mit.edu 0FC3042E345AD05D
-echo "Terminé..."
-echo -n "Êtes-vous là ? [ENTRER pour oui]"
-read imhere1
-echo -n "Taper 10 quand on vous demande quel discord est a installer, ok ? [ENTRER pour ok]"
-read okdiscord
-yaourt discord --noconfirm
-echo "Terminé..."
-echo " "
-echo " "
-echo "Installation de spotify"
-echo -n "Êtes-vous là ? [ENTRER poour oui]"
-read imhere2
-echo -n "Taper 36 quand on vous demande quel spotify est a installer, ok ? [ENTRER pour ok]"
-read okspotify
-yaourt spotify --noconfirm
+echo "Téléchargement de la liste des packets games.list"
+echo "Les paquets suivants vont être télécharger: "
+cat games.list
+echo "Êtes vous sûr ? [ENTRER pour continuer]"
+read sur2
+cat games.list | xargs yaourt -S --needed --noconfirm
+
 
 # Configuration
+echo -n "Voulez-vous configurer les tray-icons et gnome ? [O/n]"
+read configTray
+if [ -z $configTray ] || [ $configTray = 'y' ] || [ $configTray = 'Y' ] || [ $configTray = 'yes' ] || [ $configTray = 'YES' ] || [ $configTray = 'o' ] || [ $configTray = 'O' ] || [ $configTray = 'oui' ] || [ $configTray = 'OUI' ]
+then
+	echo "Configuration de gnome en cours..."
+	echo "Appuyez sur OFF, puis le switch passe sur ON"
+	xdg-open https://extensions.gnome.org/extension/1031/topicons/
+	echo "Avez-vous passer de OFF à ON ? [ENTRER si c'est le cas]"
+	read configTrayExtOn
+	echo "Allez dans extentions, puis chercher TopIcons Plus"
+	gnome-tweaks
+	echo "C'est bon ? [ENTRER si c'est le cas]"
+	read configTrayExtOk
+	echo "Téléchargement de la configuration de TopIcons Plus..."
+	wget -q https://github.com/ungarscool1/dotfile/raw/master/files/topIconsPlus/extension.js
+	mv extension.js ~/.local/share/gnome-shell/extensions/TopIcons@phocean.net/
+
+	echo "Appuyez sur OFF, puis le switch passe sur ON"
+	xdg-open https://extensions.gnome.org/extension/118/no-topleft-hot-corner/
+	echo "Avez-vous passer de OFF à ON ? [ENTRER si c'est le cas]"
+	read configHotConerExtOn
+	echo "Allez dans extentions, puis chercher No hot corner"
+	gnome-tweaks
+	echo "C'est bon ? [ENTRER si c'est le cas]"
+	read configHotConerExtOk
+	echo " "
+	echo " "
+	echo "Téléchargement du theme Yaru"
+	wget -q https://github.com/ungarscool1/dotfile/raw/master/files/Yaru.zip
+	unzip Yaru.zip
+	sudo mv Yaru /usr/shares/themes/
+	sudo mv Yaru-dark /usr/shares/themes/
+	echo "Veuillez appliquer le theme"
+	gnome-tweaks
+else
+	echo "Configuration de gnome décliné !"
+fi
+
 echo -n "Voulez-vous configurer discord ? [O/n]"
 read configDiscord
 if [ -z $configDiscord ] || [ $configDiscord = 'y' ] || [ $configDiscord = 'Y' ] || [ $configDiscord = 'yes' ] || [ $configDiscord = 'YES' ] || [ $configDiscord = 'o' ] || [ $configDiscord = 'O' ] || [ $configDiscord = 'oui' ] || [ $configDiscord = 'OUI' ]
@@ -79,3 +98,33 @@ then
 else
 	echo "Configuration de spotify décliné !"
 fi
+
+echo " "
+echo " "
+echo -n "Voulez-vous configurer Messages Android ? [O/n]"
+read configmsgAndroid
+if [ -z $configmsgAndroid ] || [ $configmsgAndroid = 'y' ] || [ $configmsgAndroid = 'Y' ] || [ $configmsgAndroid = 'yes' ] || [ $configmsgAndroid = 'YES' ] || [ $configmsgAndroid = 'o' ] || [ $configmsgAndroid = 'O' ] || [ $configmsgAndroid = 'oui' ] || [ $configmsgAndroid = 'OUI' ]
+then
+	echo "Configuration de messages Android en cours..."
+	
+	sudo npm install nativefier -g
+	wget -q https://github.com/ungarscool1/dotfile/raw/master/files/android-messages-icon.png
+	wget -q https://github.com/ungarscool1/dotfile/raw/master/files/Messages%20Android.desktop -o Messages\ Android.desktop
+	mv Messages\ Android.desktop ~/.local/share/applications/
+	nativefier --name "Messages Android" --icon "android-messages-icon.png" https://messages.android.com/
+	sudo mkdir /opt/ungarscool1
+	sudo mv messages-android-linux-x64 /opt/ungarscool1/messages-android
+	sudo ln /opt/ungarscool1/messages-android/messages-android /bin/messages-android
+	echo "Connectez-vous et fermez Messages Android une fois connecté"
+	/opt/ungarscool1/messages-android/messages-android
+else
+	echo "Configuration de Messages Android décliné !"
+fi
+
+
+
+# Nettoyage...
+echo " "
+echo " "
+echo "Nettoyage..."
+rm Yaru.zip packages.list games.list android-messages-icon.png
