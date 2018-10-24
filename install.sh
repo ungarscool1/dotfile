@@ -118,7 +118,14 @@ else
 	echo "Configuration de .bashrc décliné !"
 fi
 
-
+echo " "
+echo " "
+echo "Correction de steam..."
+echo "Suppression des raccourcis..."
+sudo rm /usr/share/applications/steam*
+echo "Téléchargement d'un raccourci non buggé..."
+wget -q https://raw.githubusercontent.com/ungarscool1/dotfile/master/files/steam.desktop
+sudo mv steam.desktop /usr/share/applications/
 # Nettoyage...
 echo " "
 echo " "
