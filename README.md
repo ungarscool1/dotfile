@@ -13,7 +13,7 @@ Euh non
 Tout est écrit sur ![ungarscool1/ungs-bash](https://github.com/ungarscool1/ungs-bash)
 ## Comment installer ton dotfile ?
 ### Si vous avez curl
-`` curl https://raw.githubusercontent.com/ungarscool1/dotfile/master/install.sh | sudo sh ``
+`` curl https://raw.githubusercontent.com/ungarscool1/dotfile/master/install.sh | sh ``
 ### Si vous n'avez pas curl
 Pas besoin de mettre la commande sudo avant ``sh install.sh`` car sudo est inclu à chaque commande dans le fichier d'intallation.
 `` wget https://raw.githubusercontent.com/ungarscool1/dotfile/master/install.sh``
