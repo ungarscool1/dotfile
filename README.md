@@ -8,9 +8,9 @@ J'ai Antergos 18.10
 ## A qui s'adresse se repo ?
 Se repo s'adresse à son créateur mais vous pouvait vous en servir affin d'avoir ma config Arch
 ## Peux-tu me passé une clé de license IDEA ?
-Euh non
+Non, de toute façon j'utilise la version community
 ## Comment se servir de ungs-utils ?
-Tout est écrit sur ![ungarscool1/ungs-bash](https://github.com/ungarscool1/ungs-bash)
+Tout est écrit sur [ungarscool1/ungs-bash](https://github.com/ungarscool1/ungs-bash)
 ## Comment installer ton dotfile ?
 ### Si vous avez curl
 `` curl https://raw.githubusercontent.com/ungarscool1/dotfile/master/install.sh | sh ``
