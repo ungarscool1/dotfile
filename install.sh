@@ -124,6 +124,26 @@ fi
 
 echo " "
 echo " "
+echo -n "Êtes-vous en dual boot avec Windows 10 (Legacy) ? [O/n]"
+read configGrub
+if [ -z $configGrub ] || [ $configGrub = 'y' ] || [ $configGrub = 'Y' ] || [ $configGrub = 'yes' ] || [ $configGrub = 'YES' ] || [ $configGrub = 'o' ] || [ $configGrub = 'O' ] || [ $configGrub = 'oui' ] || [ $configGrub = 'OUI' ]
+then
+	echo "Configuration de grub en cours..."
+	
+	sudo npm install nativefier -g
+	wget -q https://github.com/ungarscool1/dotfile/raw/master/files/40_custom
+	sudo rm /etc/grub.d/40_custom
+	sudo mv 40_custom /etc/grub.d/
+	sudo grub-mkconfig -o /boot/grub/grub.cfg
+	echo "Configuration de grub, terminé"
+else
+	echo "Configuration de grub décliné !"
+fi
+
+
+
+echo " "
+echo " "
 echo "Correction de steam..."
 echo "Suppression des raccourcis..."
 sudo rm /usr/share/applications/steam*
