@@ -13,8 +13,9 @@ sudo echo "Votre mot de passe est enregistrer pour la durée de l'installation"
 
 # Installation
 
-echo "Installation de yaourt..."
-sudo pacman -Sq yaourt wget dialog
+echo "Installation des prérequis..."
+sudo apt update
+sudo apt install -y wget dialog
 echo "Terminé"
 echo " "
 echo " "
@@ -88,7 +89,7 @@ else
     echo "XXX"
     echo "Installation de $package"
     echo "XXX"
-    sudo yaourt -Ss $package --needed --noconfirm --quiet
+    sudo apt install -y $package --quiet
 fi
 
 compteur=`expr $compteur + 1`
@@ -116,7 +117,7 @@ else
     echo "XXX"
     echo "Installation de $package"
     echo "XXX"
-    sudo yaourt -Ss $package --needed --noconfirm --quiet
+    sudo apt install -y $package --quiet
 fi
 
 compteur=`expr $compteur + 1`
@@ -127,12 +128,12 @@ done
 
 # Configuration
 
-$DIALOG --title " Configuration " --clear --yesno "Voulez-vous configurer Budgie ?" 25 50
+$DIALOG --title " Configuration " --clear --yesno "Voulez-vous configurer Gnome ?" 25 50
 
 case $? in
 	0) wget -q https://raw.githubusercontent.com/ungarscool1/dotfile/master/files/scripts/installBudgie.sh; chmod +x installBudgie.sh; ./installBudgie.sh;;
-	1)	echo "Configuration de budgie décliné !";;
-	255)	echo "Configuration de budgie décliné !";;
+	1)	echo "Configuration de Gnome décliné !";;
+	255)	echo "Configuration de Gnome décliné !";;
 esac
 
 
@@ -170,7 +171,7 @@ case $? in
 	255)	echo "Configuration de .bashrc décliné !";;
 esac
 
-$DIALOG --title " Configuration " --clear --yesno "Êtes-vous en dual boot avec Windows 10 (Legacy) ?" 25 50
+$DIALOG --title " Configuration " --clear --yesno "Êtes-vous en dual boot avec Windows 10 (Legacy) \n La configuration est spécifique avec mes configurations BIOS, si vous n'avez pas les mêmes,\nil est recommender de faire NON?" 25 50
 
 case $? in
 	0) 	wget -q https://raw.githubusercontent.com/ungarscool1/dotfile/master/scripts/dualBoot.sh; chmod +x dualBoot.sh; ./dualBoot.sh;;
