@@ -12,12 +12,7 @@ Non, de toute façon j'utilise la version community
 ## Comment se servir de ungs-utils ?
 Tout est écrit sur [ungarscool1/ungs-bash](https://github.com/ungarscool1/ungs-bash)
 ## Comment installer ton dotfile ?
-### Si vous avez curl
-`` curl https://raw.githubusercontent.com/ungarscool1/dotfile/master/install.sh | sh ``
-### Si vous n'avez pas curl
 Pas besoin de mettre la commande sudo avant ``sh install.sh`` car sudo est inclu à chaque commande dans le fichier d'intallation.
-`` wget https://raw.githubusercontent.com/ungarscool1/dotfile/master/install.sh``
-
-``sh install.sh``
+`` wget https://raw.githubusercontent.com/ungarscool1/dotfile/master/install.sh && sh install.sh``
 ## J'ai un bug !
 Si vous avez un bug il y a la section issue pour me prévenir du bug
