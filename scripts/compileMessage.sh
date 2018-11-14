@@ -9,7 +9,7 @@ if (( $compteur == 0)); then
     echo "XXX"
     echo "Installation de nativefier..."
     echo "XXX"
-    sudo npm install nativefier -g
+    sudo npm install nativefier --quiet -g
 elif (($compteur == 20)); then
     echo "XXX"
     echo "Téléchargement des prérequis..."

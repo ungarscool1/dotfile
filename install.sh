@@ -1,7 +1,7 @@
 DIALOG=${DIALOG=dialog}
 
 
-$DIALOG --title " Avertissement " --clear --yesno "Le dotfile est customiser pour mon utilisation !\nL'installateur est a utiliser à vos riques et périls !\nÊtes-vous d'accord pour installer le dotfile ?" 25 50
+$DIALOG --clear --title " Avertissement " --clear --yesno "Le dotfile est customiser pour mon utilisation !\nL'installateur est a utiliser à vos riques et périls !\nÊtes-vous d'accord pour installer le dotfile ?" 25 50
 
 case $? in
 	0) echo "Requesting sudoeur...";;
@@ -14,7 +14,7 @@ sudo echo "Votre mot de passe est enregistrer pour la durée de l'installation"
 # Installation
 
 echo "Installation de yaourt..."
-sudo pacman -Sy yaourt wget dialog
+sudo pacman -Sq yaourt wget dialog
 echo "Terminé"
 echo " "
 echo " "
@@ -72,13 +72,13 @@ done
 ## Installation of packages.list
 ##
 
-packagesToInstall=$(cat games.list | wc -l)
+packagesToInstall=$(cat packages.list | wc -l)
 compteur=1
 (
 while test $compteur != $(($packagesToInstall+1))
 do
 percent=$(awk -vn=$compteur -vx=$packagesToInstall 'BEGIN{print(n/x*100)}')
-package=$(sed -n "${compteur}p" < games.list)
+package=$(sed -n "${compteur}p" < packages.list)
 echo $percent
 if (( $compteur == $(($packagesToInstall+1)))); then
     echo "XXX"
@@ -156,33 +156,16 @@ esac
 $DIALOG --title " Configuration " --clear --yesno "Voulez-vous configurer Messages Android ?" 25 50
 
 case $? in
-	0) 	wget -q https://raw.githubusercontent.com/ungarscool1/dotfile/master/files/scripts/compileMessage.sh; chmod +x compileMessage.sh; ./compileMessage.sh;;
+	0) 	wget -q https://raw.githubusercontent.com/ungarscool1/dotfile/master/scripts/compileMessage.sh; chmod +x compileMessage.sh; ./compileMessage.sh;;
 	1)	echo "Configuration de Messages Android décliné !";;
 	255)	echo "Configuration de Messages Android décliné !";;
 esac
 
 
-
-echo " "
-echo " "
-echo -n "Voulez-vous configurer .bashrc ? [O/n]"
-read configbash
-if [ -z $configbash ] || [ $configbash = 'y' ] || [ $configbash = 'Y' ] || [ $configbash = 'yes' ] || [ $configbash = 'YES' ] || [ $configbash = 'o' ] || [ $configbash = 'O' ] || [ $configbash = 'oui' ] || [ $configbash = 'OUI' ]
-then
-	echo "Configuration de .bashrc en cours..."
-
-	rm .bashrc
-	wget -q https://raw.githubusercontent.com/ungarscool1/dotfile/master/files/.bashrc
-	echo "Configuration de .bashrc, terminé"
-else
-	echo "Configuration de .bashrc décliné !"
-fi
-
-
 $DIALOG --title " Configuration " --clear --yesno "Voulez-vous configurer .bashrc ?" 25 50
 
 case $? in
-	0) echo "Configuration de .bashrc en cours...";	rm ~/.bashrc;	wget -q https://raw.githubusercontent.com/ungarscool1/dotfile/master/files/.bashrc;	echo "Configuration de .bashrc, terminé";;
+	0) echo "Configuration de .bashrc en cours...";	rm ~/.bashrc;	wget -q https://raw.githubusercontent.com/ungarscool1/dotfile/master/files/.bashrc; mv .bashrc ~/;	echo "Configuration de .bashrc, terminé";;
 	1)	echo "Configuration de .bashrc décliné !";;
 	255)	echo "Configuration de .bashrc décliné !";;
 esac
@@ -190,14 +173,15 @@ esac
 $DIALOG --title " Configuration " --clear --yesno "Êtes-vous en dual boot avec Windows 10 (Legacy) ?" 25 50
 
 case $? in
-	0) 	wget -q https://raw.githubusercontent.com/ungarscool1/dotfile/master/files/scripts/dualBoot.sh; chmod +x dualBoot.sh; ./dualBoot.sh;;
+	0) 	wget -q https://raw.githubusercontent.com/ungarscool1/dotfile/master/scripts/dualBoot.sh; chmod +x dualBoot.sh; ./dualBoot.sh;;
 	1)	echo "Configuration de grub décliné !";;
 	255)	echo "Configuration de grub décliné !";;
 esac
 
-wget -q https://raw.githubusercontent.com/ungarscool1/dotfile/master/files/scripts/patch.sh; chmod +x patch.sh; ./patch.sh
+wget -q https://raw.githubusercontent.com/ungarscool1/dotfile/master/scripts/patch.sh
+chmod +x patch.sh
+./patch.sh
 
 
 
 clear
-echo "Installation terminé !"

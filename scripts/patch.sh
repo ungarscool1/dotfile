@@ -2,7 +2,7 @@
 DIALOG=${DIALOG=dialog}
 compteur=0
 (
-while test $compteur != 133
+while test $compteur != 132
 do
 echo $compteur
 if (($compteur==0)); then
@@ -28,7 +28,7 @@ echo "XXX"
 echo "Terminé"
 echo "XXX"
 fi
-compteur=`expr $compteur + 50`
+compteur=`expr $compteur + 33`
 done
 ) | dialog --gauge "Récuperation des fichier à télécharger..." 6 60 0
 
