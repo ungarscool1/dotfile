@@ -15,7 +15,7 @@ elif (($compteur == 20)); then
     echo "Téléchargement des prérequis..."
     echo "XXX"
     wget -q https://github.com/ungarscool1/dotfile/raw/master/files/android-messages-icon.png
-    wget -q https://raw.githubusercontent.com/ungarscool1/dotfile/master/files/Messages%20Android.desktop -o Messages\ Android.desktop;
+    wget -q https://raw.githubusercontent.com/ungarscool1/dotfile/master/files/Messages%20Android.desktop
 elif (($compteur == 40)); then
     echo "XXX"
     echo "Compilation de l'application..."
