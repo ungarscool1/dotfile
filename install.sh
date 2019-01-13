@@ -13,7 +13,7 @@ sudo echo "Votre mot de passe est enregistrer pour la durée de l'installation"
 
 # Installation
 
-echo "Installation de yaourt..."
+echo "Installation de yaourt, wget et dialog..."
 sudo pacman -Sq yaourt wget dialog
 echo "Terminé"
 echo " "
