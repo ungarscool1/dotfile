@@ -127,10 +127,10 @@ done
 
 # Configuration
 
-$DIALOG --title " Configuration " --clear --yesno "Voulez-vous configurer Budgie ?" 25 50
+$DIALOG --title " Configuration " --clear --yesno "Voulez-vous configurer Gnome ?" 25 50
 
 case $? in
-	0) wget -q https://raw.githubusercontent.com/ungarscool1/dotfile/master/files/scripts/installBudgie.sh; chmod +x installBudgie.sh; ./installBudgie.sh;;
+	0) wget -q https://raw.githubusercontent.com/ungarscool1/dotfile/master/files/scripts/installGnome.sh; chmod +x installGnome.sh; ./installGnome.sh;;
 	1)	echo "Configuration de budgie décliné !";;
 	255)	echo "Configuration de budgie décliné !";;
 esac
@@ -182,6 +182,12 @@ wget -q https://raw.githubusercontent.com/ungarscool1/dotfile/master/scripts/pat
 chmod +x patch.sh
 ./patch.sh
 
+$DIALOG --title " Terminé " --clear --yesno "Voulez-vous redémarrer l'ordinateur, afin d'appliqué toutes les installations de pilotes et autres ?" 25 50
 
+case $? in
+	0) 	sudo shutdown -r now;;
+	1)	echo "";;
+	255)	echo "";;
+esac
 
 clear
