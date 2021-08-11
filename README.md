@@ -1,6 +1,6 @@
 # Léo's dotfile
 
-![neofetch](https://raw.githubusercontent.com/ungarscool1/dotfiles/master/image/neofetch.png)
+![neofetch](https://github.com/ungarscool1/dotfile/raw/master/image/neofetch.png)
 
 ## Installation
 **Warning** If you want use this dotfile repository, you need to review the code, configuration file.
