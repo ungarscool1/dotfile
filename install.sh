@@ -24,7 +24,7 @@ sudo pacman -S xorg sddm
 sudo pacman -S plasma kde-applications
 sudo systemctl enable sddm
 sudo systemctl enable NetworkManager
-sudo wget -q -O /usr/lib/sddm/sddm.conf.d/default.conf https://raw.githubusercontent.com/ungarscool1/dotfile/master/conf/sddm.conf
+sudo wget -q -O /usr/lib/sddm/sddm.conf.d/default.conf https://github.com/ungarscool1/dotfile/raw/master/conf/sddm.conf
 
 echo "Installing dev tools"
 sudo pacman -S base-devel
