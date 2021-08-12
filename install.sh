@@ -51,7 +51,12 @@ echo -ne "\r |- zsh\n"
 echo -ne " |- git"
 git config --global user.name "Léo Godard"
 git config --global user.email "leo.godard@epitech.eu"
+git config --global gpg.program gpg2
 echo -ne "\r |- git\n"
+echo -ne " |- gpg (RSA², 4096)"
+wget -q -O ~/.gnupg/gpg-agent.conf https://github.com/ungarscool1/dotfile/raw/master/conf/sddm.conf
+gpg --full-gen-key
+echo -ne "\r |- gpg\n"
 
 rm packages.list
 
