@@ -16,6 +16,10 @@ fi
 
 # Installation
 
+echo "Setting locale"
+sudo echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
+sudo locale-gen
+
 echo "Installing wget zsh git"
 sudo pacman -Sq wget git zsh
 
