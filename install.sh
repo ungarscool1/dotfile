@@ -39,6 +39,11 @@ wget -q https://github.com/ungarscool1/dotfile/raw/master/packages/packages.list
 echo "Installing packages"
 yay -S --nocleanmenu --nodiffmenu --noeditmenu --noupgrademenu --noremovemake --cleanafter $(cat packages.list)
 
+echo "Trackpad driver"
+git clone https://github.com/mohamed-badaoui/asus-touchpad-numpad-driver
+cd ./asus-touchpad-numpad-driver
+echo -ne "2\n2\n" | sudo ./install.sh
+cd ..
 
 # Configuration
 
