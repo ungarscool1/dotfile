@@ -9,25 +9,13 @@ fi
 
 echo "Requesting sudo password"
 sudo echo "Your sudo password is registered while installing the script"
-if [ "$?" -ne 1 ]; then
-	echo "You refused to type your sudo password"
-	exit 1
-fi
 
 # Installation
-
-echo "Setting locale"
-sudo echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
-sudo locale-gen
 
 echo "Installing wget zsh git"
 sudo pacman -Sq wget git zsh
 
 echo "Installing plasma"
-sudo pacman -S xorg sddm
-sudo pacman -S plasma kde-applications
-sudo systemctl enable sddm
-sudo systemctl enable NetworkManager
 sudo wget -q -O /usr/lib/sddm/sddm.conf.d/default.conf https://github.com/ungarscool1/dotfile/raw/master/conf/sddm.conf
 
 echo "Installing dev tools"
@@ -37,7 +25,21 @@ echo "source ~/peda/peda.py" >> ~/.gdbinit
 
 wget -q https://github.com/ungarscool1/dotfile/raw/master/packages/packages.list
 echo "Installing packages"
-yay -S --nocleanmenu --nodiffmenu --noeditmenu --noupgrademenu --noremovemake --cleanafter $(cat packages.list)
+sudo pacman -Sy --noconfirm $(cat packages.list)
+rm packages.list
+
+echo "Installing yay"
+git clone https://aur.archlinux.org/yay.git
+sudo mv yay /opt/yay
+sudo chown -R $USER:$USER /opt/yay
+cd /opt/yay
+makepkg -si
+cd $HOME
+
+wget -q https://github.com/ungarscool1/dotfile/raw/master/packages/aur.list
+echo "Installing AUR packages"
+yay -S $(cat aur.list)
+rm aur.list
 
 echo "Trackpad driver"
 git clone https://github.com/mohamed-badaoui/asus-touchpad-numpad-driver
@@ -48,12 +50,6 @@ cd ..
 # Configuration
 
 echo "-- Configuring the script --"
-echo -ne " |- discord (please close discord after login)"
-discord
-echo -ne "\r |- discord\n"
-echo -ne " |- spotify (please close spotify after login)"
-spotify
-echo -ne "\r |- spotify\n"
 echo -ne " |- zsh"
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 echo -ne "\r |- zsh\n"
@@ -67,6 +63,5 @@ wget -q -O ~/.gnupg/gpg-agent.conf https://github.com/ungarscool1/dotfile/raw/ma
 gpg --full-gen-key
 echo -ne "\r |- gpg\n"
 
-rm packages.list
 
 clear
