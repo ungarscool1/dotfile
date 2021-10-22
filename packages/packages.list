@@ -17,3 +17,10 @@ vim
 virt-manager
 libevdev
 python-libevdev
+i3-gaps
+i3status
+alacritty
+i3lock
+feh
+pipewire-pulse
+ttf-font-awesome

@@ -15,7 +15,7 @@ sudo echo "Your sudo password is registered while installing the script"
 echo "Installing wget zsh git"
 sudo pacman -Sq wget git zsh
 
-echo "Installing plasma"
+echo "Installing sddm"
 sudo wget -q -O /usr/lib/sddm/sddm.conf.d/default.conf https://github.com/ungarscool1/dotfile/raw/master/conf/sddm.conf
 
 echo "Installing dev tools"
@@ -52,6 +52,7 @@ cd ..
 echo "-- Configuring the script --"
 echo -ne " |- zsh"
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+wget -q -O ~/.zshrc https://github.com/ungarscool1/dotfile/raw/master/conf/.zshrc
 echo -ne "\r |- zsh\n"
 echo -ne " |- git"
 git config --global user.name "Léo Godard"
@@ -59,9 +60,34 @@ git config --global user.email "leo.godard@epitech.eu"
 git config --global gpg.program gpg2
 echo -ne "\r |- git\n"
 echo -ne " |- gpg (RSA², 4096)"
-wget -q -O ~/.gnupg/gpg-agent.conf https://github.com/ungarscool1/dotfile/raw/master/conf/sddm.conf
+wget -q -O ~/.gnupg/gpg-agent.conf https://github.com/ungarscool1/dotfile/raw/master/conf/gpg-agent.conf
 gpg --full-gen-key
 echo -ne "\r |- gpg\n"
-
+echo -ne " |- fonts"
+fc-cache -fv
+echo -ne "\r |- fonts\n"
+echo -ne " |- i3"
+mkdir -p ~/.config/
+mkdir -p ~/.config/i3
+wget -q -O ~/.config/i3/config https://github.com/ungarscool1/dotfile/raw/master/conf/i3/config
+echo -ne "\r |- i3\n"
+echo -ne " |- alacritty"
+mkdir -p ~/.config/alacritty
+wget -q -O ~/.config/alacritty/nord.yml https://github.com/ungarscool1/dotfile/raw/master/conf/alacritty/nord.yml
+wget -q -O ~/.alacritty.yml https://github.com/ungarscool1/dotfile/raw/master/conf/.alacritty.yml
+echo -ne "\r |- alacritty\n"
+echo -ne " |- dunst"
+mkdir -p ~/.config/dunst
+wget -q -O ~/.config/dunst/dunstrc https://github.com/ungarscool1/dotfile/raw/master/conf/dunst/dunstrc
+echo -ne "\r |- dunst\n"
+echo -ne " |- rofi"
+mkdir -p ~/.config/rofi
+wget -q -O ~/.config/rofi/config.rasi https://github.com/ungarscool1/dotfile/raw/master/conf/rofi/config.rasi
+wget -q -O ~/.config/rofi/themes/dracula.rasi https://github.com/ungarscool1/dotfile/raw/master/conf/rasi/themes/dracula.rasi
+echo -ne "\r |- rofi\n"
+echo -ne " |- polybar"
+mkdir -p ~/.config/polybar
+wget -q -O ~/.config/polybar/config https://github.com/ungarscool1/dotfile/raw/master/conf/polybar/config
+echo -ne "\r |- polybar\n"
 
 clear

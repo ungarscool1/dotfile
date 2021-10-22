@@ -70,7 +70,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker)
+plugins=(git docker screen)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -99,3 +99,9 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias codeclimate="docker run --interactive --tty --rm --env CODECLIMATE_CODE=\"$PWD\" --volume \"$PWD\":/code --volume /var/run/docker.sock:/var/run/docker.sock --volume /tmp/cc:/tmp/cc codeclimate/codeclimate analyze"
+alias epidocker="docker run --rm -v \"$PWD:/project\" -it epitechcontent/epitest-docker /bin/bash"
+alias vi="vim"
+export PATH="$PATH:$HOME/.flutter/bin"
+[[ /usr/bin/kubectl ]] && source <(kubectl completion zsh)
+source /usr/share/nvm/init-nvm.sh
