@@ -1,2 +1,4 @@
+env:
+  TERM: xterm-256color
 import:
   - ~/.config/alacritty/nord.yml
